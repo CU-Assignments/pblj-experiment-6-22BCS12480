@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Employee {
+    String name;
+    int age;
+    double salary;
+
+    public Employee(String name, int age, double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return name + " - Age: " + age + ", Salary: $" + salary;
+    }
+}
+
+public class EmployeeSort {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>(Arrays.asList(
+            new Employee("Shikha", 30, 50000),
+            new Employee("Saloni", 25, 70000),
+            new Employee("Yudhvir", 35, 60000)
+        ));
+
+        // Sorting by name
+        employees.sort(Comparator.comparing(emp -> emp.name));
+
+        System.out.println("Sorted by Name:");
+        employees.forEach(System.out::println);
+
+        // Sorting by age
+        employees.sort(Comparator.comparingInt(emp -> emp.age));
+
+        System.out.println("\nSorted by Age:");
+        employees.forEach(System.out::println);
+
+        // Sorting by salary
+        employees.sort(Comparator.comparingDouble(emp -> emp.salary));
+
+        System.out.println("\nSorted by Salary:");
+        employees.forEach(System.out::println);
+    }
+}
